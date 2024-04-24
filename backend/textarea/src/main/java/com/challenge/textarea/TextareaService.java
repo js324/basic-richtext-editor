@@ -16,7 +16,7 @@ public class TextareaService {
 
     public AreaRecord getRecord(String id) {
         Optional<AreaRecord> res = textareaRepository.findById(id);
-        return res.get();
+        return res.orElse(null);
     }
     public Iterable<AreaRecord> getRecords() {
         Iterable<AreaRecord> res = textareaRepository.findAll();

@@ -24,6 +24,9 @@ public class TextareaController {
     @GetMapping("/content")
     public ResponseEntity<String> getRecord(@RequestParam String id) {
         AreaRecord res = textareaService.getRecord(id);
+        if (res == null) {
+            return new ResponseEntity<String>("Item not found!", HttpStatus.NOT_FOUND);
+        }
         return new ResponseEntity<String>(res.getContent(), HttpStatus.OK);
     }
     @PutMapping("/content")
